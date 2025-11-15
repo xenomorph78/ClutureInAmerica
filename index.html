@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article - Reporting on Culture in America</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        /* Header Styles */
+        .top-bar {
+            background-color: #000;
+            color: #fff;
+            padding: 8px 0;
+            font-size: 12px;
+        }
+
+        .top-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header {
+            background-color: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #d02b2c;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #d02b2c;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .breadcrumb a {
+            color: #d02b2c;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .main-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .article-content {
+            max-width: 100%;
+        }
+
+        .article-category {
+            color: #d02b2c;
+            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .article-headline {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .article-subheadline {
+            font-size: 20px;
+            line-height: 1.5;
+            color: #666;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 0;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 30px;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #d02b2c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .author-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .author-name {
+            font-weight: 600;
+            font-size: 14px;
+            color: #000;
+        }
+
+        .article-date {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+            margin-left: auto;
+        }
+
+        .share-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 1px solid #e0e0e0;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .share-btn:hover {
+            background: #f5f5f5;
+            border-color: #999;
+        }
+
+        .featured-image {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .image-caption {
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        /* STORY CONTENT SECTION - EDIT YOUR STORY HERE */
+        .story-content {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .story-content p {
+            margin-bottom: 20px;
+        }
+
+        .story-content h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .story-content h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .story-content blockquote {
+            border-left: 4px solid #d02b2c;
+            padding-left: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            font-size: 20px;
+            color: #555;
+        }
+
+        .story-content ul, .story-content ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .story-content li {
+            margin-bottom: 10px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .sidebar-section {
+            margin-bottom: 40px;
+        }
+
+        .sidebar-title {
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d02b2c;
+        }
+
+        .sidebar-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .sidebar-item:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-item-category {
+            color: #d02b2c;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .sidebar-item-title {
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: #000;
+            text-decoration: none;
+            display: block;
+        }
+
+        .sidebar-item-title:hover {
+            color: #d02b2c;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #f5f5f5;
+            margin-top: 80px;
+            padding: 40px 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .footer-section h4 {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .footer-section a:hover {
+            color: #d02b2c;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 30px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .main-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .nav-menu {
+                gap: 15px;
+            }
+
+            .article-headline {
+                font-size: 32px;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .article-headline {
+                font-size: 26px;
+            }
+
+            .article-subheadline {
+                font-size: 16px;
+            }
+
+            .story-content {
+                font-size: 16px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div>Breaking News</div>
+            <div>Subscribe | Sign In</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Reporting on Culture in America</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#">Politics</a></li>
+                    <li><a href="#">Culture</a></li>
+                    <li><a href="#">Business</a></li>
+                    <li><a href="#">Opinion</a></li>
+                    <li><a href="#">More</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="#">Home</a> / <a href="#">Culture</a> / <span>Article</span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <article class="article-content">
+            <!-- Category -->
+            <div class="article-category">Culture & Society</div>
+
+            <!-- Headline -->
+            <h1 class="article-headline">Four Hearts: The Tattoo Symbol Celebrating Interracial Love Across America</h1>
+
+            <!-- Subheadline -->
+            <p class="article-subheadline">A simple four-heart tattoo design has emerged as a powerful symbol of interracial relationships, particularly among couples celebrating love that transcends racial boundaries in an increasingly diverse America.</p>
+
+            <!-- Article Meta -->
+            <div class="article-meta">
+                <div class="author-info">
+                    <div class="author-avatar">RC</div>
+                    <div class="author-details">
+                        <div class="author-name">Cultural Affairs Desk</div>
+                        <div class="article-date">Published Nov. 15, 2025, 12:00 PM EST</div>
+                    </div>
+                </div>
+                <div class="share-buttons">
+                    <button class="share-btn" title="Share on Facebook">f</button>
+                    <button class="share-btn" title="Share on Twitter">𝕏</button>
+                    <button class="share-btn" title="Share via Email">✉</button>
+                    <button class="share-btn" title="Copy Link">🔗</button>
+                </div>
+            </div>
+
+            <!-- Featured Image -->
+            <div class="featured-image">
+                <img src="couple-photo.jpg" alt="Interracial couple embracing outdoors" style="object-fit: cover;">
+            </div>
+            <div class="image-caption">Couples across America are celebrating interracial love through symbolic tattoos and public displays of affection. Photo: Submitted</div>
+
+            <!-- ============================================ -->
+            <!-- STORY CONTENT -->
+            <!-- ============================================ -->
+            <div class="story-content">
+                <p><strong>In an era where love increasingly transcends traditional boundaries, a new symbol has quietly emerged in tattoo parlors across the United States:</strong> four interconnected hearts, representing the union of interracial couples—specifically, the bond between white women and Black men.</p>
+
+                <p>What began as a personal expression of love has evolved into a recognizable cultural marker, appearing on shoulders, wrists, and collarbones of couples who want to celebrate their relationships in a society still navigating complex conversations about race, identity, and belonging.</p>
+
+                <p>The tattoo's minimalist design—four simple hearts arranged in a row—belies its deeper significance. Each heart represents not just the individuals in the relationship, but also the families, communities, and cultural heritages that come together in these unions.</p>
+
+                <h2>A Symbol Born from Love and Identity</h2>
+
+                <p>Tattoo artists across the country report an uptick in requests for the four-heart design, particularly from younger couples who see the symbol as both a celebration of their relationship and a quiet form of advocacy. Unlike more overtly political symbols, the four hearts carry their meaning subtly, recognizable to those within the community while remaining elegantly simple to outside observers.</p>
+
+                <p>"We're seeing more couples who want to mark their commitment in ways that acknowledge the unique aspects of their relationship," explains Maria Rodriguez, a tattoo artist based in Atlanta who has inked dozens of the four-heart designs. "It's not about making a statement to the world—it's about honoring what their relationship means to them."</p>
+
+                <div class="featured-image" style="margin: 30px 0;">
+                    <img src="tattoo-photo.jpg" alt="Four heart tattoo design on shoulder" style="object-fit: cover;">
+                </div>
+                <div class="image-caption">The four-heart tattoo has become a recognizable symbol among interracial couples. Photo: Submitted</div>
+
+                <h2>Love in Modern America</h2>
+
+                <p>The rise of this symbol comes at a time when interracial relationships, while more accepted than ever, still face unique challenges. According to recent Pew Research data, approximately 19% of newlyweds in the United States are married to someone of a different race or ethnicity—a figure that has steadily climbed over the past three decades.</p>
+
+                <p>Yet despite growing acceptance, many interracial couples report experiencing everything from subtle microaggressions to overt discrimination. For some, the four-heart tattoo serves as both a personal affirmation and a connection to a broader community of couples navigating similar experiences.</p>
+
+                <blockquote>
+                    "When I see someone else with the four hearts, there's an instant recognition. We don't have to say anything—we just know we understand each other's journey."
+                </blockquote>
+
+                <p>Social media has played a significant role in popularizing the symbol, with hashtags related to interracial relationships garnering millions of posts. Couples share photos of their matching tattoos alongside stories of how they met, overcame family resistance, or simply celebrate their everyday lives together.</p>
+
+                <h2>Cultural Significance and Conversation</h2>
+
+                <p>Sociologists who study relationship trends say symbols like the four hearts reflect broader shifts in how Americans think about race, love, and identity. Dr. Jennifer Washington, a professor of sociology at Columbia University, notes that such symbols can serve important functions for couples in interracial relationships.</p>
+
+                <p>"These visual markers create community and validate experiences that might otherwise feel isolated," Washington explains. "They're saying, 'We exist, our love is real, and we're part of something larger than just the two of us.'"</p>
+
+                <p>The tattoo trend also highlights generational differences in how interracial relationships are perceived and celebrated. While older generations may have faced significant stigma, younger couples increasingly view their relationships through a lens of normalcy rather than novelty—though they remain aware of the cultural significance.</p>
+
+                <h2>Beyond the Symbol</h2>
+
+                <p>For many couples, the decision to get the four-heart tattoo represents a meaningful milestone—often marking anniversaries, engagements, or other significant moments in their relationships. The permanence of the tattoo mirrors their commitment to each other and, in some cases, their determination to build families that embrace multiple cultural heritages.</p>
+
+                <p>Some couples report that their tattoos have sparked conversations with strangers, friends, and family members—conversations that range from curious to confrontational. Yet for most, the symbol remains primarily personal: a reminder of their choice to love across lines that society has historically drawn.</p>
+
+                <p>As America continues to grow more diverse, with multiracial and multiethnic families becoming increasingly common, symbols like the four hearts may eventually become relics of a time when such relationships required special acknowledgment. But for now, they serve as quiet testaments to love's ability to bridge divides—one heart at a time.</p>
+
+                <h2>Looking Forward</h2>
+
+                <p>Tattoo artists and cultural observers alike expect the symbol to continue evolving, potentially expanding to represent other forms of interracial relationships or being adapted by couples who want to personalize the design with additional elements like dates, initials, or complementary imagery.</p>
+
+                <p>What remains constant is the fundamental message: love that crosses racial boundaries is worth celebrating, worth marking permanently on one's skin, and worth sharing with a community of others who understand the unique joy and challenges these relationships can bring.</p>
+
+                <p>In a nation still grappling with its complex racial history and working toward a more inclusive future, the four hearts offer a simple yet profound statement—that love, in all its forms, deserves recognition, respect, and celebration.</p>
+            </div>
+            <!-- ============================================ -->
+            <!-- STORY CONTENT ENDS -->
+            <!-- ============================================ -->
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Trending Now</h3>
+                <div class="sidebar-item">
+                    <div class="sidebar-item-category">Politics</div>
+                    <a href="#" class="sidebar-item-title">Related Story Title Goes Here</a>
+                </div>
+                <div class="sidebar-item">
+                    <div class="sidebar-item-category">Culture</div>
+                    <a href="#" class="sidebar-item-title">Another Interesting Article Headline</a>
+                </div>
+                <div class="sidebar-item">
+                    <div class="sidebar-item-category">Business</div>
+                    <a href="#" class="sidebar-item-title">Important Story About Current Events</a>
+                </div>
+                <div class="sidebar-item">
+                    <div class="sidebar-item-category">Society</div>
+                    <a href="#" class="sidebar-item-title">Feature Story With Compelling Angle</a>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Editor's Picks</h3>
+                <div class="sidebar-item">
+                    <div class="sidebar-item-category">Analysis</div>
+                    <a href="#" class="sidebar-item-title">Deep Dive Into Important Topic</a>
+                </div>
+                <div class="sidebar-item">
+                    <div class="sidebar-item-category">Opinion</div>
+                    <a href="#" class="sidebar-item-title">Thoughtful Commentary on Current Issue</a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>News</h4>
+                <ul>
+                    <li><a href="#">Politics</a></li>
+                    <li><a href="#">Culture</a></li>
+                    <li><a href="#">Business</a></li>
+                    <li><a href="#">Opinion</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Ethics Guidelines</a></li>
+                    <li><a href="#">Corrections</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 Reporting on Culture in America. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
